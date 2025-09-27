@@ -7,10 +7,10 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModKeys {
     public static KeyBinding ANNOUNCEMENT_KEY = new KeyBinding(
-            "key.mtc.announcement",
+            "key.atm.announcement",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_H,
-            "category.freezesword"
+            "category.atm"
     );
 
 

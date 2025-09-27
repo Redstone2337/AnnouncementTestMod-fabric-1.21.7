@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.redstone233.atm.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+      "net.redstone233.atm.mixin.ExampleMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

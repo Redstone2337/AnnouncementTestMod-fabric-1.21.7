@@ -1,7 +1,11 @@
 package net.redstone233.atm;
 
+import com.nimbusds.jose.util.cache.CachedObject;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.command.CommandRegistryAccess;
+import net.redstone233.atm.command.AnnouncementCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +22,10 @@ public class AnnouncementTestMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
+        CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
+            commandDispatcher.register(AnnouncementCommand.register(commandRegistryAccess));
+        });
 
 		LOGGER.info("Hello Fabric world!");
 	}

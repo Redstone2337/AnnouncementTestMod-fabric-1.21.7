@@ -6,6 +6,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.CommandRegistryAccess;
 import net.redstone233.atm.command.AnnouncementCommand;
+import net.redstone233.atm.component.ModComponentTypes;
+import net.redstone233.atm.items.ModItemGroup;
+import net.redstone233.atm.items.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +32,10 @@ public class AnnouncementTestMod implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
             commandDispatcher.register(AnnouncementCommand.register(commandRegistryAccess));
         });
+
+        ModItems.init();
+        ModComponentTypes.init();
+        ModItemGroup.register();
 
 
 		LOGGER.info("Hello Fabric world!");

@@ -17,5 +17,9 @@
   "commands.atm.settings.subtitle.set.failure": "Failed to set subtitle: %s",
   "commands.atm.settings.subtitle.set.success": "Subtitle successfully set to: %s",
   "commands.atm.settings.success": "Settings applied successfully.",
-  "key.atm.announcement": "Displays the custom announcement."
+  "item.atm.blazing_flame_sword": "Blazing Flame Sword",
+  "item.atm.ice_freeze_sword": "Ice Freezing Sword",
+  "itemGroup.atm.mod_items": "ATM | Items",
+  "key.atm.announcement": "Displays the custom announcement.",
+  "key.atm.use_ability": "Use Ability"
 }

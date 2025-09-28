@@ -1,4 +1,21 @@
 {
-  "category.atm": "Customize the announcement screen.",
+  "category.atm": "Custom Announcement.",
+  "commands.atm.display.failure": "Execution failed! No player targets found.",
+  "commands.atm.display.success": "Executed successfully! Screens have been shown to %s.",
+  "commands.atm.settings.argument.true": "This argument must be set to 'true' to execute this command.",
+  "commands.atm.settings.failure": "Failed to apply settings.",
+  "commands.atm.settings.maintitle.empty.failure": "Failed to check if main title is empty: %s",
+  "commands.atm.settings.maintitle.empty.status": "Main title is currently empty: %s",
+  "commands.atm.settings.maintitle.reset.failure": "Failed to reset main title: %s",
+  "commands.atm.settings.maintitle.reset.success": "Main title successfully reset to default: %s",
+  "commands.atm.settings.maintitle.set.failure": "Failed to set main title: %s",
+  "commands.atm.settings.maintitle.set.success": "Main title successfully set to: %s",
+  "commands.atm.settings.subtitle.empty.failure": "Failed to check if subtitle is empty: %s",
+  "commands.atm.settings.subtitle.empty.status": "Subtitle is currently empty: %s",
+  "commands.atm.settings.subtitle.reset.failure": "Failed to reset subtitle: %s",
+  "commands.atm.settings.subtitle.reset.success": "Subtitle successfully reset to default: %s",
+  "commands.atm.settings.subtitle.set.failure": "Failed to set subtitle: %s",
+  "commands.atm.settings.subtitle.set.success": "Subtitle successfully set to: %s",
+  "commands.atm.settings.success": "Settings applied successfully.",
   "key.atm.announcement": "Displays the custom announcement."
 }

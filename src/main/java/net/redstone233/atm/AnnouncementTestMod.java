@@ -23,10 +23,16 @@ public class AnnouncementTestMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
+        LOGGER.info("开始初始化公告模组内容...");
+        long startTime = System.currentTimeMillis();
+
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
             commandDispatcher.register(AnnouncementCommand.register(commandRegistryAccess));
         });
 
+
 		LOGGER.info("Hello Fabric world!");
+
+        LOGGER.info("模组内容初始化完成，总耗时 {}ms", System.currentTimeMillis() - startTime);
 	}
 }

@@ -35,7 +35,7 @@ public class AnnouncementTestModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        LOGGER.info("开始初始化测试模组客户端...");
+        LOGGER.info("开始初始化公告模组客户端...");
         long startTime = System.currentTimeMillis();
 
 

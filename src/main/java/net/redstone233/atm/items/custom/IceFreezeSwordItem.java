@@ -1,5 +1,6 @@
 package net.redstone233.atm.items.custom;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -58,5 +59,11 @@ public class IceFreezeSwordItem extends Item {
         } else {
             return ActionResult.FAIL;
         }
+    }
+
+    @Override
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
+        super.postDamageEntity(stack, target, attacker);
     }
 }

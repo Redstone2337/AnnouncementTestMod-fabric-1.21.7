@@ -21,5 +21,8 @@
   "item.atm.ice_freeze_sword": "Ice Freezing Sword",
   "itemGroup.atm.mod_items": "ATM | Items",
   "key.atm.announcement": "Displays the custom announcement.",
-  "key.atm.use_ability": "Use Ability"
+  "key.atm.use_ability": "Use Ability",
+  "key.use_ability.item": "%s",
+  "tooltip.ability_sword.display1": "Hold [",
+  "tooltip.ability_sword.display2": " ] for Ability to use"
 }

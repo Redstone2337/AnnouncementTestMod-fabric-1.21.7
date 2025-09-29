@@ -9,6 +9,7 @@ import net.redstone233.atm.command.AnnouncementCommand;
 import net.redstone233.atm.component.ModComponentTypes;
 import net.redstone233.atm.items.ModItemGroup;
 import net.redstone233.atm.items.ModItems;
+import net.redstone233.atm.materials.ModToolMaterials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,7 @@ public class AnnouncementTestMod implements ModInitializer {
         ModItems.init();
         ModComponentTypes.init();
         ModItemGroup.register();
+        ModToolMaterials.init();
 
 
 		LOGGER.info("Hello Fabric world!");

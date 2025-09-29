@@ -9,21 +9,21 @@ import net.minecraft.util.Rarity;
 import net.redstone233.atm.AnnouncementTestMod;
 import net.redstone233.atm.items.custom.BlazingFlameSwordItem;
 import net.redstone233.atm.items.custom.IceFreezeSwordItem;
-import net.redstone233.atm.materials.ModToolMaterial;
+import net.redstone233.atm.materials.ModToolMaterials;
 
 import java.util.function.Function;
 
 public class ModItems {
 
     public static final Item BLAZING_FLAME_SWORD = register("blazing_flame_sword",
-            settings -> new BlazingFlameSwordItem(ModToolMaterial.SPECIAL,50, 7.5f ,settings),
+            settings -> new BlazingFlameSwordItem(ModToolMaterials.SPECIAL,50, 7.5f ,settings),
             new Item.Settings()
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)
     );
 
     public static final Item ICE_FREEZE_SWORD = register("ice_freeze_sword",
-            settings -> new IceFreezeSwordItem(ModToolMaterial.SPECIAL,55, 7.5f ,settings),
+            settings -> new IceFreezeSwordItem(ModToolMaterials.SPECIAL,55, 7.5f ,settings),
             new Item.Settings()
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)

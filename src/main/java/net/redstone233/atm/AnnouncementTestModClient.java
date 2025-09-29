@@ -1,5 +1,8 @@
 package net.redstone233.atm;
 
+import net.fabricmc.fabric.api.item.v1.ComponentTooltipAppenderRegistry;
+import net.minecraft.component.DataComponentTypes;
+import net.redstone233.atm.component.ModComponentTypes;
 import net.redstone233.atm.config.ConfigInitializer;
 import net.redstone233.atm.config.ModConfig;
 import net.redstone233.atm.keys.ModKeys;
@@ -48,10 +51,13 @@ public class AnnouncementTestModClient implements ClientModInitializer {
                 showAnnouncementIfNeeded(minecraftClient);
             }
         });
+        ComponentTooltipAppenderRegistry.addBefore(DataComponentTypes.LORE, ModComponentTypes.BLAZING_FLAME_SWORD_COMPONENT);
+        ComponentTooltipAppenderRegistry.addBefore(DataComponentTypes.LORE, ModComponentTypes.ICE_FREEZE_SWORD_COMPONENT);
 
         LOGGER.info("客户端初始化完成，总耗时 {}ms", System.currentTimeMillis() - startTime);
 
     }
+
 
 
 

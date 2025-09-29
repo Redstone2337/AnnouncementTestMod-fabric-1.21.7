@@ -23,7 +23,7 @@ public class ModItems {
     );
 
     public static final Item ICE_FREEZE_SWORD = register("ice_freeze_sword",
-            settings -> new IceFreezeSwordItem(ModToolMaterial.SPECIAL,55, 3.5f ,settings),
+            settings -> new IceFreezeSwordItem(ModToolMaterial.SPECIAL,55, 7.5f ,settings),
             new Item.Settings()
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)

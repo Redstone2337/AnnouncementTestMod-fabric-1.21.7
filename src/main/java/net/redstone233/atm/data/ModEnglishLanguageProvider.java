@@ -49,5 +49,8 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("commands.atm.settings.failure", "Failed to apply settings.");
 
         translationBuilder.add("itemGroup.atm.mod_items", "ATM | Items");
+        translationBuilder.add("tooltip.ability_sword.display1","Hold [");
+        translationBuilder.add("key.use_ability.item","%s");
+        translationBuilder.add("tooltip.ability_sword.display2"," ] for Ability to use");
     }
 }

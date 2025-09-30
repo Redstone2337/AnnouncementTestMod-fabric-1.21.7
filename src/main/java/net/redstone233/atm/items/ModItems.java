@@ -1,5 +1,6 @@
 package net.redstone233.atm.items;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
@@ -20,6 +21,7 @@ public class ModItems {
             new Item.Settings()
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)
+                    .component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)
     );
 
     public static final Item ICE_FREEZE_SWORD = register("ice_freeze_sword",
@@ -27,6 +29,7 @@ public class ModItems {
             new Item.Settings()
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)
+                    .component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)
     );
 
     private static Item register(String id, Function<Item.Settings, Item> factory, Item.Settings settings) {

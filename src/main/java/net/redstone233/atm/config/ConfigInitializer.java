@@ -1,6 +1,6 @@
 package net.redstone233.atm.config;
 
-import net.redstone233.atm.AnnouncementTestModClient;
+import net.redstone233.atm.config.v1.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -25,14 +25,11 @@ public class ConfigInitializer {
         long startTime = System.currentTimeMillis();
 
         try {
-            // 注册配置
-            configHolder = AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
+            // 注册配置 - 新的配置类在 net.redstone233.atm.config.v1 包中
+            ModConfig.init(); // 调用新配置类的初始化方法
 
-            // 获取配置实例
-            AnnouncementTestModClient.CONFIG = configHolder.getConfig();
-
-            // 确保新配置选项有默认值
-            ensureNewConfigDefaults();
+            // 获取配置持有者
+            configHolder = AutoConfig.getConfigHolder(ModConfig.class);
 
             initialized = true;
             initializationTime = System.currentTimeMillis() - startTime;
@@ -40,28 +37,10 @@ public class ConfigInitializer {
             LOGGER.info("配置初始化成功，耗时 {}ms", initializationTime);
 
         } catch (Exception e) {
-            LOGGER.error("配置初始化失败，使用默认配置", e);
-            AnnouncementTestModClient.CONFIG = new ModConfig();
-            ensureNewConfigDefaults(); // 确保默认配置也有新选项
-            initialized = true; // 仍然标记为已初始化，但使用默认配置
+            LOGGER.error("配置初始化失败", e);
+            initialized = true; // 仍然标记为已初始化
             initializationTime = System.currentTimeMillis() - startTime;
         }
-    }
-
-    /**
-     * 确保新配置选项有默认值
-     */
-    private static void ensureNewConfigDefaults() {
-        if (AnnouncementTestModClient.CONFIG.iconPath == null || AnnouncementTestModClient.CONFIG.iconPath.isEmpty()) {
-            AnnouncementTestModClient.CONFIG.iconPath = "testmod:textures/gui/announcement_icon.png";
-        }
-
-        // 确保图标尺寸在有效范围内
-        if (AnnouncementTestModClient.CONFIG.iconWidth < 16) AnnouncementTestModClient.CONFIG.iconWidth = 16;
-        if (AnnouncementTestModClient.CONFIG.iconWidth > 1024) AnnouncementTestModClient.CONFIG.iconWidth = 1024;
-        if (AnnouncementTestModClient.CONFIG.iconHeight < 16) AnnouncementTestModClient.CONFIG.iconHeight = 16;
-        if (AnnouncementTestModClient.CONFIG.iconHeight > 1024) AnnouncementTestModClient.CONFIG.iconHeight = 1024;
-        if (AnnouncementTestModClient.CONFIG.iconTextSpacing < 0) AnnouncementTestModClient.CONFIG.iconTextSpacing = 10;
     }
 
     /**
@@ -78,8 +57,7 @@ public class ConfigInitializer {
     public static void refreshConfig() {
         ensureInitialized();
         if (configHolder != null) {
-            AnnouncementTestModClient.CONFIG = configHolder.getConfig();
-            ensureNewConfigDefaults(); // 确保刷新后新配置选项也有默认值
+            configHolder.load();
             LOGGER.debug("配置已刷新");
         }
     }
@@ -105,7 +83,7 @@ public class ConfigInitializer {
      * 检查配置是否可用
      */
     public static boolean isConfigAvailable() {
-        return initialized && AnnouncementTestModClient.CONFIG != null;
+        return initialized && configHolder != null;
     }
 
     /**
@@ -130,5 +108,16 @@ public class ConfigInitializer {
      */
     public static long getInitializationTime() {
         return initializationTime;
+    }
+
+    /**
+     * 获取配置实例
+     */
+    public static ModConfig getConfig() {
+        ensureInitialized();
+        if (configHolder != null) {
+            return configHolder.getConfig();
+        }
+        return null;
     }
 }

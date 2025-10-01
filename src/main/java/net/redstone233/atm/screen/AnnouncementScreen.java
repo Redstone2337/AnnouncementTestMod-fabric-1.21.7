@@ -47,9 +47,9 @@ public class AnnouncementScreen extends Screen {
         }
 
         // 返回有效配置
-        if (AnnouncementTestModClient.CONFIG != null) {
-            return AnnouncementTestModClient.CONFIG;
-        }
+//        if (AnnouncementTestModClient.CONFIG != null) {
+//            return AnnouncementTestModClient.CONFIG;
+//        }
 
         AnnouncementTestModClient.LOGGER.warn("使用默认配置作为回退");
         return new ModConfig();

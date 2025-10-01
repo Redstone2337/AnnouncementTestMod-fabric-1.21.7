@@ -1,37 +1,46 @@
 package net.redstone233.atm;
 
-import com.nimbusds.jose.util.cache.CachedObject;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.command.CommandRegistryAccess;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.redstone233.atm.command.AnnouncementCommand;
 import net.redstone233.atm.component.ModComponentTypes;
+import net.redstone233.atm.config.v1.ModConfig;
+import net.redstone233.atm.event.ServerEventHandler;
 import net.redstone233.atm.items.ModItemGroup;
 import net.redstone233.atm.items.ModItems;
 import net.redstone233.atm.materials.ModToolMaterials;
+import net.redstone233.atm.network.ModMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AnnouncementTestMod implements ModInitializer {
-	public static final String MOD_ID = "atm";
+    public static final String MOD_ID = "atm";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    private static ServerEventHandler serverEventHandler;
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-
+    @Override
+    public void onInitialize() {
         LOGGER.info("开始初始化公告模组内容...");
         long startTime = System.currentTimeMillis();
 
+        // 初始化配置系统
+        ModConfig.init();
+
+        // Initialize server event handler
+        serverEventHandler = new ServerEventHandler();
+
+        // Register network messages
+        ModMessages.registerC2SPackets();
+        LOGGER.info("Network system registered");
+
+        // Register event listeners
+        registerEvents();
+
         CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
-            commandDispatcher.register(AnnouncementCommand.register(commandRegistryAccess));
+//            commandDispatcher.register(AnnouncementCommand.register(commandRegistryAccess));
         });
 
         ModItems.init();
@@ -39,9 +48,30 @@ public class AnnouncementTestMod implements ModInitializer {
         ModItemGroup.register();
         ModToolMaterials.init();
 
-
-		LOGGER.info("Hello Fabric world!");
-
+        LOGGER.info("Hello Fabric world!");
         LOGGER.info("模组内容初始化完成，总耗时 {}ms", System.currentTimeMillis() - startTime);
-	}
+    }
+
+    private void registerEvents() {
+        // Player join server event
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            serverEventHandler.onPlayerJoined(handler.player);
+        });
+
+        // Server starting event
+        ServerLifecycleEvents.SERVER_STARTING.register(server -> {
+            LOGGER.info("Server starting, Announcement Mod ready");
+        });
+
+        // Server stopping event
+        ServerLifecycleEvents.SERVER_STOPPING.register(server -> {
+            LOGGER.info("Server stopping");
+            // 保存配置
+            ModConfig.save();
+        });
+    }
+
+    public static ServerEventHandler getServerEventHandler() {
+        return serverEventHandler;
+    }
 }

@@ -17,6 +17,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(ModItems.BLAZING_FLAME_SWORD, "Blazing Flame Sword");
         translationBuilder.add(ModItems.ICE_FREEZE_SWORD, "Ice Freezing Sword");
+        translationBuilder.add(ModItems.TEST_ITEM, "Test Item");
 
         translationBuilder.add("narration.scrollable_text","Scrollable Text：%s");
         translationBuilder.add("narration.scrollable_text.usage","Usage Scrollable Text");

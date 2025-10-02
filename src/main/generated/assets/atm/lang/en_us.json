@@ -30,6 +30,7 @@
   "gui.announcement_mod.submit_button": "Submit Report",
   "item.atm.blazing_flame_sword": "Blazing Flame Sword",
   "item.atm.ice_freeze_sword": "Ice Freezing Sword",
+  "item.atm.test_item": "Test Item",
   "itemGroup.atm.mod_items": "ATM | Items",
   "key.atm.announcement": "Displays the custom announcement.",
   "key.atm.use_ability": "Use Ability",

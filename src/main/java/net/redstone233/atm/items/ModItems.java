@@ -10,6 +10,7 @@ import net.minecraft.util.Rarity;
 import net.redstone233.atm.AnnouncementTestMod;
 import net.redstone233.atm.items.custom.BlazingFlameSwordItem;
 import net.redstone233.atm.items.custom.IceFreezeSwordItem;
+import net.redstone233.atm.items.custom.TestItem;
 import net.redstone233.atm.materials.ModToolMaterials;
 
 import java.util.function.Function;
@@ -30,6 +31,13 @@ public class ModItems {
                     .maxDamage(300000)
                     .rarity(Rarity.RARE)
                     .component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE,true)
+    );
+
+    public static final Item TEST_ITEM = register("test_item",
+            settings -> new TestItem(settings),
+            new Item.Settings()
+                    .maxCount(64)
+                    .attributeModifiers(TestItem.createAttributeModifiers())
     );
 
     private static Item register(String id, Function<Item.Settings, Item> factory, Item.Settings settings) {

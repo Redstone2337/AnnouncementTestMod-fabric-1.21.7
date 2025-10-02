@@ -26,6 +26,7 @@ public class ModItemGroup {
                         .icon(() -> new ItemStack(ModItems.BLAZING_FLAME_SWORD)).entries((displayContext, entries) -> {
                             entries.add(ModItems.BLAZING_FLAME_SWORD);
                             entries.add(ModItems.ICE_FREEZE_SWORD);
+                            entries.add(ModItems.TEST_ITEM);
                         })
                         .build()
         );

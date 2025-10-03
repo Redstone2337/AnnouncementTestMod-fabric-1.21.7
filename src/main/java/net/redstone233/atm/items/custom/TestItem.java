@@ -34,7 +34,7 @@ public class TestItem extends Item {
                 )
                 .add(
                         EntityAttributes.ATTACK_SPEED,
-                        new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, 5.5F, EntityAttributeModifier.Operation.ADD_VALUE),
+                        new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, -5.5F, EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND
                 )
                 .build();

@@ -44,7 +44,7 @@ public abstract class SuperFurnaceBlockEntityMixin {
         }
     }
 
-    @Inject(method = "getCookTime", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getCookTime", at = @At("RETURN"), cancellable = true)
     private static void onGetCookTime(ServerWorld world, AbstractFurnaceBlockEntity furnace, CallbackInfoReturnable<Integer> cir) {
         SuperFurnaceBlockEntityMixin mixin = (SuperFurnaceBlockEntityMixin) (Object) furnace;
         if (mixin != null && mixin.isFast) {

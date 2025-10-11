@@ -139,5 +139,14 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.announcement_mod.default_content.line7", " ");
         translationBuilder.add("text.announcement_mod.default_content.line8", "§bMod updates randomly");
         translationBuilder.add("text.announcement_mod.default_content.line9", "§cIf you find bugs, please report to the mod author or repository!");
+
+        // 测试菜单
+        translationBuilder.add("menu.title.text", "Test Menu");
+        translationBuilder.add("menu.body.text", "This is a test menu for demonstration purposes.");
+        translationBuilder.add("menu.button.text.1", "Button 1");
+        translationBuilder.add("menu.button.text.2", "Button 2");
+        translationBuilder.add("menu.title.modVersion.text", "Mod Version: %s");
+        translationBuilder.add("menu.title.gameVersion.text", "Game Version: %s");
+
     }
 }

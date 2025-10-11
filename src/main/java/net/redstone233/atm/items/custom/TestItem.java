@@ -1,5 +1,6 @@
 package net.redstone233.atm.items.custom;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -17,6 +18,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.redstone233.atm.screen.v1.MenuScreen;
 
 import javax.xml.crypto.Data;
 
@@ -61,6 +63,7 @@ public class TestItem extends Item {
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         if (world.isClient) {
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST,1800,6));
+            MinecraftClient.getInstance().setScreen(new MenuScreen());
             return ActionResult.SUCCESS;
         } else {
 //            user.sendMessage(Text.literal("这个物品没有任何右键功能。"),false);

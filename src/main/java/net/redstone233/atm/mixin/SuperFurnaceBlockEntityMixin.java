@@ -24,8 +24,8 @@ public abstract class SuperFurnaceBlockEntityMixin {
 
     @Unique
     private final static BlockPattern SUPER_FURNACE = BlockPatternBuilder.start()
-            .aisle("AAA","AAA","AAA")
-            .aisle("AAA","AAA","AAB")
+            .aisle("CCC","CCC","CCC")
+            .aisle("CCC","CCC","CBC")
             .aisle("AAA","AAA","AAA")
             .where('A', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.STONE)))
             .where('B', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.FURNACE)))
@@ -34,7 +34,7 @@ public abstract class SuperFurnaceBlockEntityMixin {
     @Unique
     private final static BlockPattern SUPER_BLAST_FURNACE = BlockPatternBuilder.start()
             .aisle("CCC","CCC","CCC")
-            .aisle("CCC","CCC","CCB")
+            .aisle("CCC","CCC","CBC")
             .aisle("AAA","AAA","AAA")
             .where('A', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.SMOOTH_STONE)))
             .where('B', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.BLAST_FURNACE)))
